@@ -9,7 +9,7 @@ class FSystemManager;
 class FGame
 {
 public:
-	static entt::registry registry;
+	inline static entt::registry registry;
 
 	FGame();
 	void Initialise();

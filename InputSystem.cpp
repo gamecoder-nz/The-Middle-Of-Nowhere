@@ -1,8 +1,6 @@
 #include "InputSystem.hpp"
 #include "entt/entt.hpp"
 
-extern entt::sigh<void()> QuitGameSignal;
-
 FInputSystem::FInputSystem(sf::RenderWindow* Window)
 {
 	this->Window = Window;

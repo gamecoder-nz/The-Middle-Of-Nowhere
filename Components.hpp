@@ -3,16 +3,18 @@
 
 #include <SFML/Graphics/Vertex.hpp>
 #include <SFML/Graphics/Rect.hpp>
+#include <box2d/b2_body.h>
 
-struct TransformComponent
+struct FTransformComponent
 {
 	sf::Vector2f Position;
 };
 
-struct RigidBodyComponent
+struct FRigidBodyComponent
 {
 	sf::Vector2f Velocity;
 	sf::Vector2f HitboxOffset;
 	sf::FloatRect Hitbox;
+	b2Body* Box2dBody;
 };
 #endif

@@ -3,7 +3,10 @@
 
 #include "entt/entt.hpp"
 
-entt::sigh<void()> QuitGameSignal;
-entt::sink QuitGameSignalSink{ QuitGameSignal };
+extern entt::sigh<void()> QuitGameSignal;
+extern entt::sink<void()> QuitGameSignalSink;
+
+extern entt::sigh<void(int)> CreateEntitySignal;
+extern entt::sink<void(int)> CreateEntitySignalSink;
 
 #endif

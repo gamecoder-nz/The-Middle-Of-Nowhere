@@ -2,6 +2,7 @@
 #define INPUT_SYSTEM_HPP
 
 #include "System.hpp"
+#include "GameSignals.hpp"
 #include <SFML/Graphics.hpp>
 
 class FInputSystem : public FSystem

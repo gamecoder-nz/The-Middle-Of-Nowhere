@@ -15,6 +15,7 @@ public:
 	T* AddSystem(ARGS&&... systemArgs)
 	{
 		T* system = new T(std::forward<ARGS>(systemArgs)...);
+		((T*)system)->Initialise();
 
 		Systems.push_back(system);
 

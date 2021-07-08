@@ -7,4 +7,6 @@ static constexpr int WINDOW_WIDTH = 800;
 
 static constexpr int WINDOW_HEIGHT = 600;
 
+static constexpr float BOX2D_SCALE_FACTOR = 100.0f;
+
 #endif
