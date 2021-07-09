@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\SFML-2.5.1\include;D:\box2d\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\SFML-2.5.1\include;D:\box2d\include;D:\entt\src</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -106,7 +106,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\SFML-2.5.1\include;D:\box2d\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\SFML-2.5.1\include;D:\box2d\include;D:\entt\src</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -124,7 +124,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\SFML-2.5.1\include;D:\box2d\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\SFML-2.5.1\include;D:\box2d\include;D:\entt\src</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -142,7 +142,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\SFML-2.5.1\include;D:\box2d\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\SFML-2.5.1\include;D:\box2d\include;D:\entt\src</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -155,7 +155,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AnimationSystem.cpp" />
+    <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="ControllerSystem.cpp" />
     <ClCompile Include="PhysicsSystem.cpp" />
+    <ClCompile Include="PlayerController.cpp" />
+    <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="WorldSystem.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="InputSystem.cpp" />
@@ -164,8 +169,13 @@
     <ClCompile Include="SystemManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnimationSystem.hpp" />
     <ClInclude Include="Components.hpp" />
+    <ClInclude Include="Controller.hpp" />
+    <ClInclude Include="ControllerSystem.hpp" />
     <ClInclude Include="PhysicsSystem.hpp" />
+    <ClInclude Include="PlayerController.hpp" />
+    <ClInclude Include="RenderSystem.hpp" />
     <ClInclude Include="WorldSystem.hpp" />
     <ClInclude Include="Game.hpp" />
     <ClInclude Include="GameConfiguration.hpp" />

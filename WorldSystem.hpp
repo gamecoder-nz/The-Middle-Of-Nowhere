@@ -2,11 +2,12 @@
 #define WORLD_SYSTEM_HPP
 
 #include "System.hpp"
-#include "entt/entt.hpp"
+#include <entt/entt.hpp>
 #include <vector>
 
 const int RIGID_BODY_COMPONENT = 1 << 0;
-const int RENDERABLE_COMPONENT = 1 << 1;
+const int SPRITE_COMPONENT = 1 << 1;
+const int CONTROLLER_COMPONENT = 1 << 2;
 
 class FWorldSystem : public FSystem
 {
@@ -20,8 +21,6 @@ public:
 
 protected:
 	std::vector<entt::entity> Entities;
-
-	auto view = registry.view<const position, velocity>();
 private:
 };
 #endif

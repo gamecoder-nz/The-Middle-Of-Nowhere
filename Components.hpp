@@ -3,7 +3,10 @@
 
 #include <SFML/Graphics/Vertex.hpp>
 #include <SFML/Graphics/Rect.hpp>
+#include <SFML/Graphics/Sprite.hpp>
 #include <box2d/b2_body.h>
+
+class FController;
 
 struct FTransformComponent
 {
@@ -13,8 +16,33 @@ struct FTransformComponent
 struct FRigidBodyComponent
 {
 	sf::Vector2f Velocity;
-	sf::Vector2f HitboxOffset;
 	sf::FloatRect Hitbox;
 	b2Body* Box2dBody;
+};
+
+struct FSpriteComponent
+{
+	sf::Sprite Sprite;
+};
+
+struct FControllerComponent
+{
+	FController* Controller;
+};
+
+struct FAnimation
+{
+	sf::Vector2i FrameDimensions;
+	int YIndex;
+	int NumberOfFrames;
+	float TimePerFrame;
+};
+
+struct FAnimationComponent
+{
+	std::map<std::string, FAnimation> Animations;
+	FAnimation CurrentAnimation;
+	float CurrentFrameTime;
+	int CurrentFrame;
 };
 #endif

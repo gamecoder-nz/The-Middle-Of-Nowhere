@@ -1,7 +1,7 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
-#include "entt/entt.hpp"
+#include <entt/entt.hpp>
 #include <SFML/Graphics.hpp>
 
 class FSystemManager;
@@ -21,6 +21,8 @@ private:
 	sf::RenderWindow* Window;
 	FSystemManager* SystemManager;
 	sf::Clock DeltaClock;
+	float FPSClock;
+	int Frames;
 
 	void QuitGame();
 };
