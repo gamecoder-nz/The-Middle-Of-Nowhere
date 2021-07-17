@@ -8,6 +8,7 @@ public:
 
 	FSystem();
 
+	virtual void ConnectSignals() = 0;
 	virtual void Initialise() = 0;
 	virtual void Update(float dt) = 0;
 };

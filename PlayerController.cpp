@@ -30,24 +30,24 @@ void FPlayerController::Unpossess()
 void FPlayerController::Update(float dt)
 {
 	bool UpdateVelocity = false;
-	sf::Vector2f Velocity = FGame::registry.get<FRigidBodyComponent>(Entity).Velocity;
+	sf::Vector2f &Velocity = FGame::registry.get<FRigidBodyComponent>(Entity).Velocity;
 
 	if (MoveUp == true && Velocity.y > -0.001f)
 	{
 		UpdateVelocity = true;
 		Velocity.y = -1.0f;
 	}
-	else if (MoveDown == true && Velocity.y < 0.001f)
+	if (MoveDown == true && Velocity.y < 0.001f)
 	{
 		UpdateVelocity = true;
 		Velocity.y = 1.0f;
 	}
-	else if (MoveUp == false && Velocity.y < -0.001f)
+	if (MoveUp == false && Velocity.y < -0.001f)
 	{
 		UpdateVelocity = true;
 		Velocity.y = 0.0f;
 	}
-	else if (MoveDown == false && Velocity.y > 0.001f)
+	if (MoveDown == false && Velocity.y > 0.001f)
 	{
 		UpdateVelocity = true;
 		Velocity.y = 0.0f;
@@ -58,17 +58,17 @@ void FPlayerController::Update(float dt)
 		UpdateVelocity = true;
 		Velocity.x = -1.0f;
 	}
-	else if (MoveRight == true && Velocity.x < 0.001f)
+	if (MoveRight == true && Velocity.x < 0.001f)
 	{
 		UpdateVelocity = true;
 		Velocity.x = 1.0f;
 	}
-	else if (MoveLeft == false && Velocity.x < -0.001f)
+	if (MoveLeft == false && Velocity.x < -0.001f)
 	{
 		UpdateVelocity = true;
 		Velocity.x = 0.0f;
 	}
-	else if (MoveRight == false && Velocity.x > 0.001f)
+	if (MoveRight == false && Velocity.x > 0.001f)
 	{
 		UpdateVelocity = true;
 		Velocity.x = 0.0f;
@@ -76,7 +76,43 @@ void FPlayerController::Update(float dt)
 
 	if (UpdateVelocity == true)
 	{
-		FGame::registry.patch<FRigidBodyComponent>(Entity, [&](auto& RigidBodyComponent) { RigidBodyComponent.Velocity = Velocity; });
+		if (MoveRight == true)
+		{
+			PlayAnimationSignal.publish(Entity, "WALK_RIGHT");
+		}
+		else if (MoveLeft == true)
+		{
+			PlayAnimationSignal.publish(Entity, "WALK_LEFT");
+		}
+		else if (MoveUp == true)
+		{
+			PlayAnimationSignal.publish(Entity, "WALK_UP");
+		}
+		else if (MoveDown == true)
+		{
+			PlayAnimationSignal.publish(Entity, "WALK_DOWN");
+		}
+		else
+		{
+			int Rotation = FGame::registry.get<FTransformComponent>(Entity).Rotation;
+
+			if (Rotation == 0)
+			{
+				PlayAnimationSignal.publish(Entity, "IDLE_UP");
+			}
+			else if (Rotation == 90)
+			{
+				PlayAnimationSignal.publish(Entity, "IDLE_RIGHT");
+			}
+			else if (Rotation == 180)
+			{
+				PlayAnimationSignal.publish(Entity, "IDLE_DOWN");
+			}
+			else if (Rotation == 270)
+			{
+				PlayAnimationSignal.publish(Entity, "IDLE_LEFT");
+			}
+		}
 	}
 }
 

@@ -6,6 +6,10 @@ FInputSystem::FInputSystem(sf::RenderWindow* Window)
 	this->Window = Window;
 }
 
+void FInputSystem::ConnectSignals()
+{
+}
+
 void FInputSystem::Initialise()
 {
 	

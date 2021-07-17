@@ -1,9 +1,7 @@
 #ifndef COMPONENTS_HPP
 #define COMPONENTS_HPP
 
-#include <SFML/Graphics/Vertex.hpp>
-#include <SFML/Graphics/Rect.hpp>
-#include <SFML/Graphics/Sprite.hpp>
+#include <SFML/Graphics.hpp>
 #include <box2d/b2_body.h>
 
 class FController;
@@ -11,6 +9,7 @@ class FController;
 struct FTransformComponent
 {
 	sf::Vector2f Position;
+	int Rotation;
 };
 
 struct FRigidBodyComponent
@@ -44,5 +43,24 @@ struct FAnimationComponent
 	FAnimation CurrentAnimation;
 	float CurrentFrameTime;
 	int CurrentFrame;
+};
+
+struct FMeshComponent
+{
+	sf::VertexArray VertexArray;
+	sf::Texture Texture;
+};
+
+struct FMapComponent
+{
+	std::vector<sf::VertexArray> MapLayers;
+	sf::Texture Texture;
+	std::vector<bool> WalkableTiles;
+	sf::Vector2u MapDimensions;
+};
+
+struct FPlayerComponent
+{
+
 };
 #endif

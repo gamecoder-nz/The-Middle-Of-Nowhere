@@ -10,6 +10,7 @@ class FInputSystem : public FSystem
 public:
 	FInputSystem(sf::RenderWindow* Window);
 
+	virtual void ConnectSignals() final;
 	virtual void Initialise() final;
 	virtual void Update(float dt) final;
 

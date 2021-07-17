@@ -11,6 +11,7 @@ class FAnimationSystem :
 public:
 	FAnimationSystem();
 
+	virtual void ConnectSignals() final;
 	virtual void Initialise() final;
 	virtual void Update(float dt) final;
 

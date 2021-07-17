@@ -10,6 +10,7 @@ class FControllerSystem :
 public:
 	FControllerSystem();
 
+	virtual void ConnectSignals() final;
 	virtual void Initialise() final;
 	virtual void Update(float dt) final;
 

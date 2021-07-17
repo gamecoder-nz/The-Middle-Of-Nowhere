@@ -7,9 +7,14 @@ FControllerSystem::FControllerSystem()
 {
 }
 
-void FControllerSystem::Initialise()
+void FControllerSystem::ConnectSignals()
 {
     FGame::registry.on_destroy<FControllerComponent>().connect<&FControllerSystem::OnDestroy>(this);
+}
+
+void FControllerSystem::Initialise()
+{
+    
 }
 
 void FControllerSystem::Update(float dt)

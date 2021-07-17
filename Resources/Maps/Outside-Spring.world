@@ -1,0 +1,12 @@
+{
+    "patterns": [
+        {
+            "regexp": "Outside-Spring-([0-9]+)-([0-9]+)\\.tmx",
+            "multiplierX": 3200,
+            "multiplierY": 1600,
+            "offsetX": 0,
+            "offsetY": 0
+        }
+    ],
+    "type": "world"
+}

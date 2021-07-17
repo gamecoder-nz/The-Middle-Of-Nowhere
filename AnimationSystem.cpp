@@ -7,9 +7,14 @@ FAnimationSystem::FAnimationSystem()
 {
 }
 
-void FAnimationSystem::Initialise()
+void FAnimationSystem::ConnectSignals()
 {
 	PlayAnimationSignalSink.connect<&FAnimationSystem::PlayAnimation>(this);
+}
+
+void FAnimationSystem::Initialise()
+{
+	
 }
 
 void FAnimationSystem::Update(float dt)
@@ -28,12 +33,14 @@ void FAnimationSystem::Update(float dt)
 		if (AnimationComponent.CurrentFrameTime >= CurrentAnimation.TimePerFrame)
 		{
 			AnimationComponent.CurrentFrame++;
+			AnimationComponent.CurrentFrameTime = 0.0f;
 
 			if (AnimationComponent.CurrentFrame == CurrentAnimation.NumberOfFrames)
 			{
 				AnimationComponent.CurrentFrame = 0;
-				SpriteComponent.Sprite.setTextureRect(sf::IntRect(AnimationComponent.CurrentFrame * FrameDimensions.x, FrameDimensions.y * CurrentAnimation.YIndex, FrameDimensions.x, FrameDimensions.y));
 			}
+
+			SpriteComponent.Sprite.setTextureRect(sf::IntRect(AnimationComponent.CurrentFrame* FrameDimensions.x, FrameDimensions.y* CurrentAnimation.YIndex, FrameDimensions.x, FrameDimensions.y));
 		}
 	}
 }

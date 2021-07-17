@@ -8,6 +8,7 @@
 #include "RenderSystem.hpp"
 #include "ControllerSystem.hpp"
 #include "AnimationSystem.hpp"
+#include "AssetManager.hpp"
 
 entt::sigh<void()> QuitGameSignal;
 entt::sink<void()> QuitGameSignalSink{ QuitGameSignal };
@@ -23,6 +24,17 @@ entt::sink<void(sf::Keyboard::Key)> KeyUpSignalSink{ KeyUpSignal };
 
 entt::sigh<void(entt::entity, std::string)> PlayAnimationSignal;
 entt::sink<void(entt::entity, std::string)> PlayAnimationSignalSink{ PlayAnimationSignal };
+
+entt::sigh<void(entt::entity, sf::Vector2f)> ChangeMapSignal;
+entt::sink<void(entt::entity, sf::Vector2f)> ChangeMapSignalSink{ ChangeMapSignal };
+
+entt::sigh<void(entt::entity, tmx::Map& TmxMap)> CreateMapLayersSignal;
+entt::sink<void(entt::entity, tmx::Map& TmxMap)> CreateMapLayersSignalSink{ CreateMapLayersSignal };
+
+#ifdef _DEBUG
+entt::sigh<b2World* ()> GetBox2dWorldSignal;
+entt::sink<b2World* ()> GetBox2dWorldSignalSink{ GetBox2dWorldSignal };
+#endif
 
 FGame::FGame()
 {
@@ -40,10 +52,13 @@ void FGame::Initialise()
 	SystemManager->AddSystem<FPhysicsSystem>();
 	SystemManager->AddSystem<FWorldSystem>();
 	SystemManager->AddSystem<FRenderSystem>(Window);
+	SystemManager->Initialise();
 
 	QuitGameSignalSink.connect<&FGame::QuitGame>(this);
 	Frames = 0;
 	FPSClock = 0.0f;
+
+	FAssetManager::GetInstance().LoadAssets();
 }
 
 void FGame::Run()
@@ -57,9 +72,9 @@ void FGame::Run()
 		Frames++;
 		FPSClock += dt;
 
-		if (FPSClock > 1.0f)
+		if (FPSClock > 0.1f)
 		{
-			//printf("FPS: %d\n", Frames);
+			//printf("FPS: %d\n", Frames*10);
 			Frames = 0;
 			FPSClock = 0.0f;
 		}
